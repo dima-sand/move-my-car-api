@@ -1,0 +1,45 @@
+{
+  "type": "module",
+  "name": "move-my-car-api",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "version": "1.0.0",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "npm run build:ts && fastify start -l info dist/app.js",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start-logs\"",
+    "dev:start": "fastify start --port=8080 --ignore-watch=.ts$ -w -P dist/app.js",
+    "dev:start-logs": "fastify start --port=8080 --ignore-watch=.ts$ -w -l info -P dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/autoload": "^6.0.0",
+    "@fastify/cookie": "^10.0.0",
+    "@fastify/cors": "^10.0.0",
+    "@fastify/mongodb": "^9.0.0",
+    "@fastify/sensible": "^6.0.0",
+    "@fastify/websocket": "^11.0.0",
+    "bcrypt": "^5.1.1",
+    "dataclass": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "fastify-cli": "^7.0.0",
+    "fastify-plugin": "^5.0.0",
+    "firebase-admin": "^12.5.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.4.4",
+    "@types/ws": "^8.5.12",
+    "c8": "^9.0.0",
+    "concurrently": "^8.2.2",
+    "fastify-tsconfig": "^2.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^5.2.2"
+  }
+}

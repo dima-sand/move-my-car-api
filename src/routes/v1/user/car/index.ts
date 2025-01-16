@@ -5,7 +5,7 @@ import toggleCarCallIsReadController from './toggleCarCallIsRead.js';
 import saveCarLocationController from './saveCarLocation.js';
 import deleteCarCallController from './deleteCarCall.js';
 import addNewCarController from './addNewCar.js';
-import saveVehicleInfoController from './saveVehicleInfo.js';
+import saveCarInfoController from './saveCarInfo.js';
 
 const userCarControllers: FastifyPluginAsync = async (fastify, _opts) => {
   fastify.post(
@@ -28,8 +28,8 @@ const userCarControllers: FastifyPluginAsync = async (fastify, _opts) => {
     controllerHandler(addNewCarController, fastify)
   )
   fastify.post(
-    UserCarRoutes.SaveVehicleInfo,
-    controllerHandlerWithUser(saveVehicleInfoController, fastify)
+    UserCarRoutes.SaveCarInfo,
+    controllerHandlerWithUser(saveCarInfoController, fastify)
   )
 };
 

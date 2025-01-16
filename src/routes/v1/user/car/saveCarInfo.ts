@@ -5,15 +5,15 @@ import User from '../../../../models/db/user/index.js';
 import SuperError from '../../../../models/errors/SuperError.js';
 import Car from '../../../../models/db/car/index.js';
 
-const saveVehicleInfoController: Controller = async (
+const saveCarInfoController: Controller = async (
   request,
   _reply,
   fastify
 ) => {
-  const updatedVehicle = request.body;
+  const updatedCar = request.body;
 
   const userWithUpdatedCarInfo =
-    fastify.userDB.updateCarInfoById(updatedVehicle);
+    fastify.userDB.updateCarInfoById(updatedCar);
 
   const { modifiedCount } = await dbConnect(fastify).replaceOne(
     {
@@ -33,4 +33,4 @@ const saveVehicleInfoController: Controller = async (
   }
 };
 
-export default saveVehicleInfoController;
+export default saveCarInfoController;

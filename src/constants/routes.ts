@@ -17,7 +17,7 @@ export enum UserCarRoutes {
   ToggleCarCallIsRead = '/toggleCarCallIsRead',
   DeleteCarCall = '/deleteCarCall',
   AddNewCar = '/addNewCar',
-  SaveVehicleInfo = '/saveVehicleInfo',
+  SaveCarInfo = '/saveCarInfo',
 }
 
 export enum ExternalRoutes {

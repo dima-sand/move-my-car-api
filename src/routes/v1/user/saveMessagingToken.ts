@@ -1,6 +1,5 @@
 import { ObjectId } from '@fastify/mongodb';
 
-import { DBcollectionNames } from '../../../constants/db.js';
 import { dbConnect } from '../../../helpers/db/index.js';
 import { Controller } from '../../../models/common.js';
 import SuperError from '../../../models/errors/SuperError.js';
@@ -22,12 +21,16 @@ const saveMessagingTokenController: Controller = async (
     const user = fastify.userDB;
 
     if (user.messagingToken && user.messagingToken.trim().length > 0) {
-      const messageId = await sendFirebaseMessage({
-        notification: {
-          title: 'New login from another device',
-        },
-        token: user.messagingToken,
-      });
+      try {
+        const messageId = await sendFirebaseMessage({
+          notification: {
+            title: 'New login from another device',
+          },
+          token: user.messagingToken,
+        });
+      } catch (errorSendMessage) {
+        console.log({ errorSendMessage }); 
+      }
     }
 
     const userWithUpdatedMessagingToken = user.setMessagingToken(token);
